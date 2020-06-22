@@ -1,11 +1,14 @@
 package com.recipeapp.recipe.domain;
 
-import lombok.Data;
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import lombok.Getter;
+import lombok.Setter;
 
 import javax.persistence.*;
 
-@Data
 @Entity
+@Getter
+@Setter
 public class Note {
 
     @Id
@@ -13,8 +16,10 @@ public class Note {
     private Long id;
 
     @OneToOne
+    @JsonBackReference
     private Recipe recipe;
 
     @Lob
     private String recipeNotes;
+
 }
